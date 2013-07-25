@@ -1,0 +1,122 @@
+README for Modules versions
+---------------------------
+
+ This file lists third party modules built with nginx in Debian, homepage and
+ version.
+
+ array-var-nginx-module-0.03rc1
+  Homepage: http://github.com/agentzh/array-var-nginx-module/
+  Version: v0.03rc1
+
+ auth-request-nginx-module-0.2
+  Homepage: http://mdounin.ru/
+  Version: v0.2
+
+ drizzle-nginx-module
+  Homepage: http://github.com/chaoslawful/drizzle-nginx-module/
+  Version: v0.1.5
+
+ echo-nginx-module-0.45
+  Homepage: https://github.com/agentzh/echo-nginx-module
+  Version: v0.45
+
+ encrypted-session-nginx-module-0.03
+  Homepage: http://github.com/agentzh/encrypted-session-nginx-module
+  Version: v0.03
+
+ form-input-nginx-module-0.07
+  Homepage: http://github.com/calio/form-input-nginx-module
+  Version: v0.07
+
+ headers-more-nginx-module-0.21
+  Homepage: https://github.com/agentzh/headers-more-nginx-module
+  Version: v0.21
+
+ iconv-nginx-module-0.10
+  Homepage: http://github.com/calio/iconv-nginx-module
+  Version: v0.10
+
+ memc-nginx-module-0.13rc3
+  Homepage: http://github.com/agentzh/memc-nginx-module
+  Version: v0.13rc3
+
+ nginx-auth-pam
+  Homepage: http://web.iti.upv.es/~sto/nginx/
+  Version: 1.2
+
+ ngx_lua-0.8.5
+  Homepage: https://github.com/chaoslawful/lua-nginx-module
+  Version: v0.8.5
+
+ nginx-upstream-fair
+  Homepage: https://github.com/gnosek/nginx-upstream-fair
+  Version: a18b409
+
+ nginx-push
+  Homepage: http://pushmodule.slact.net/#download
+  http://pushmodule.slact.net/downloads/nginx_http_push_module-0.692.tar.gz
+  Version: 0.692
+
+ nginx-upload
+  Homepage: https://github.com/vkholodkov/nginx-upload-module
+  Version: 2.2.0
+
+ nginx-upload-progress
+  Homepage: https://github.com/masterzen/nginx-upload-progress-module
+  https://nodeload.github.com/masterzen/nginx-upload-progress-module/tarball/master
+  rm -r debian/nginx-upload-progress/test
+  Version: v0.9.0-0-ga788dea
+
+ naxsi
+  Homepage: http://code.google.com/p/naxsi/
+  Version: 0.48
+
+ nginx-cache-purge
+  Homepage: http://labs.frickle.com/nginx_ngx_cache_purge/
+  Version: 1.5
+
+ nginx-dav-ext-module
+  Homepage: https://github.com/arut/nginx-dav-ext-module
+  Version: v0.0.2-2-g54cebc1.tar.gz
+
+ ngx_coolkit-0.2rc1
+  Homepage: https://github.com/FRiCKLE/ngx_coolkit
+  Version: v0.2rc1
+
+ ngx_devel_kit-0.2.18
+  Homepage: https://github.com/simpl/ngx_devel_kit/
+  Version: v0.2.18
+
+ ngx_postgres-1.0rc2
+  Homepage: https://github.com/FRiCKLE/ngx_postgre
+  Version: v1.0rc2
+
+ rds-csv-nginx-module-0.05rc2
+  Homepage: http://github.com/agentzh/rds-csv-nginx-module
+  Version: v0.05rc2
+
+ rds-json-nginx-module-0.12rc10
+  Homepage: http://github.com/agentzh/rds-json-nginx-module/
+  Version: v0.12rc10
+
+ redis-nginx-module-0.3.6
+  Homepage: http://people.freebsd.org/~osa/
+  http://people.freebsd.org/~osa/ngx_http_redis-$ver.tar.gz
+  Version: v0.3.6
+
+ redis2-nginx-module
+  Homepage: http://github.com/agentzh/redis2-nginx-module
+  Version: v0.10
+
+ set-misc-nginx-module-0.22rc8
+  Homepage: http://github.com/agentzh/set-misc-nginx-module/
+  Version: v0.22rc8
+
+ srcache-nginx-module-0.21
+  Homepage: http://github.com/agentzh/srcache-nginx-module
+  Version: v0.21
+
+ xss-nginx-module-0.03rc9
+  Homepage: http://github.com/agentzh/xss-nginx-module
+  Version: v0.03rc9
+
