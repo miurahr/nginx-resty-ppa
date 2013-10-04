@@ -1,3 +1,10 @@
+nginx (1.4.1-4openresty1~precise) precise; urgency=low
+
+  * Introduce Media flavour.
+  * Managed by git/git-packagebuilder.
+
+ -- Hiroshi Miura <miurahr@linux.com>  Sat, 05 Oct 2013 09:56:49 +0900
+
 nginx (1.4.1-3openresty1~precise) precise; urgency=low
 
   * Fix dependency for building(again).
