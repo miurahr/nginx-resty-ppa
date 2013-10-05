@@ -94,7 +94,7 @@ config.status.media: config.env.media config.sub config.guess
 	    --with-sha1=/usr/include/openssl \
 	    --with-md5=/usr/include/openssl \
 	    --add-module=$(MODULESDIR)/nginx-rtmp-module \
-	    --add-module=$(MODULESDIR)/ngx_devel_kit-0.2.18 \
+	    --add-module=$(MODULESDIR)/ngx_devel_kit-0.2.19 \
 	    --add-module=$(MODULESDIR)/iconv-nginx-module-0.10 \
 	    --add-module=$(MODULESDIR)/echo-nginx-module-0.45 \
 	    --add-module=$(MODULESDIR)/xss-nginx-module-0.03rc9 \
@@ -152,7 +152,7 @@ config.status.openresty: config.env.openresty config.sub config.guess
 	    --with-md5=/usr/include/openssl \
 	    --with-mail \
 	    --with-mail_ssl_module \
-	    --add-module=$(MODULESDIR)/ngx_devel_kit-0.2.18 \
+	    --add-module=$(MODULESDIR)/ngx_devel_kit-0.2.19 \
 	    --add-module=$(MODULESDIR)/iconv-nginx-module-0.10 \
 	    --add-module=$(MODULESDIR)/echo-nginx-module-0.45 \
 	    --add-module=$(MODULESDIR)/xss-nginx-module-0.03rc9 \
@@ -280,7 +280,7 @@ config.status.extras: config.env.extras config.sub config.guess
 	    --with-mail_ssl_module \
 	    --add-module=$(MODULESDIR)/nginx-auth-pam \
 	    --add-module=$(MODULESDIR)/headers-more-nginx-module-0.21 \
-	    --add-module=$(MODULESDIR)/ngx_devel_kit-0.2.18 \
+	    --add-module=$(MODULESDIR)/ngx_devel_kit-0.2.19 \
 	    --add-module=$(MODULESDIR)/echo-nginx-module-0.45\
 	    --add-module=$(MODULESDIR)/nginx-http-push \
 	    --add-module=$(MODULESDIR)/ngx_lua-0.9.0 \
