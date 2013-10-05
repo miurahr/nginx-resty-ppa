@@ -1,3 +1,9 @@
+nginx (1.4.2-0openresty9~precise) precise; urgency=low
+
+  * New Openresty upstream.
+
+ -- Hiroshi Miura <miurahr@linux.com>  Sat, 05 Oct 2013 15:48:59 +0900
+
 nginx (1.4.1-4openresty1~precise) precise; urgency=low
 
   * Introduce Media flavour.
