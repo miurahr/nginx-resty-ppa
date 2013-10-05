@@ -1,5 +1,5 @@
---- nginx-1.4.1/src/event/ngx_event_accept.c	2013-05-06 03:26:50.000000000 -0700
-+++ nginx-1.4.1-patched/src/event/ngx_event_accept.c	2013-07-10 13:05:02.001249099 -0700
+--- nginx-1.4.2/src/event/ngx_event_accept.c	2013-05-06 03:26:50.000000000 -0700
++++ nginx-1.4.2-patched/src/event/ngx_event_accept.c	2013-07-10 13:05:02.001249099 -0700
 @@ -269,17 +269,28 @@ ngx_event_accept(ngx_event_t *ev)
  #endif
  

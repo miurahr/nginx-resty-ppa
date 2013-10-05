@@ -1,6 +1,6 @@
-diff --exclude '*~' --exclude '*.swp' -urp nginx-1.4.1/src/http/modules/ngx_http_scgi_module.c nginx-1.4.1-patched/src/http/modules/ngx_http_scgi_module.c
---- nginx-1.4.1/src/http/modules/ngx_http_scgi_module.c	2013-02-09 19:08:42.000000000 -0800
-+++ nginx-1.4.1-patched/src/http/modules/ngx_http_scgi_module.c	2013-04-07 12:09:55.900492634 -0700
+diff --exclude '*~' --exclude '*.swp' -urp nginx-1.4.2/src/http/modules/ngx_http_scgi_module.c nginx-1.4.2-patched/src/http/modules/ngx_http_scgi_module.c
+--- nginx-1.4.2/src/http/modules/ngx_http_scgi_module.c	2013-02-09 19:08:42.000000000 -0800
++++ nginx-1.4.2-patched/src/http/modules/ngx_http_scgi_module.c	2013-04-07 12:09:55.900492634 -0700
 @@ -39,6 +39,7 @@ static ngx_int_t ngx_http_scgi_process_s
  static ngx_int_t ngx_http_scgi_process_header(ngx_http_request_t *r);
  static void ngx_http_scgi_abort_request(ngx_http_request_t *r);
@@ -36,9 +36,9 @@ diff --exclude '*~' --exclude '*.swp' -urp nginx-1.4.1/src/http/modules/ngx_http
  static void *
  ngx_http_scgi_create_loc_conf(ngx_conf_t *cf)
  {
-diff --exclude '*~' --exclude '*.swp' -urp nginx-1.4.1/src/http/modules/ngx_http_uwsgi_module.c nginx-1.4.1-patched/src/http/modules/ngx_http_uwsgi_module.c
---- nginx-1.4.1/src/http/modules/ngx_http_uwsgi_module.c	2013-02-09 19:08:42.000000000 -0800
-+++ nginx-1.4.1-patched/src/http/modules/ngx_http_uwsgi_module.c	2013-04-07 11:58:24.546915778 -0700
+diff --exclude '*~' --exclude '*.swp' -urp nginx-1.4.2/src/http/modules/ngx_http_uwsgi_module.c nginx-1.4.2-patched/src/http/modules/ngx_http_uwsgi_module.c
+--- nginx-1.4.2/src/http/modules/ngx_http_uwsgi_module.c	2013-02-09 19:08:42.000000000 -0800
++++ nginx-1.4.2-patched/src/http/modules/ngx_http_uwsgi_module.c	2013-04-07 11:58:24.546915778 -0700
 @@ -46,6 +46,7 @@ static ngx_int_t ngx_http_uwsgi_process_
  static void ngx_http_uwsgi_abort_request(ngx_http_request_t *r);
  static void ngx_http_uwsgi_finalize_request(ngx_http_request_t *r,
@@ -74,9 +74,9 @@ diff --exclude '*~' --exclude '*.swp' -urp nginx-1.4.1/src/http/modules/ngx_http
  static void *
  ngx_http_uwsgi_create_loc_conf(ngx_conf_t *cf)
  {
-diff --exclude '*~' --exclude '*.swp' -urp nginx-1.4.1/src/http/ngx_http_upstream.c nginx-1.4.1-patched/src/http/ngx_http_upstream.c
---- nginx-1.4.1/src/http/ngx_http_upstream.c	2013-02-11 06:39:49.000000000 -0800
-+++ nginx-1.4.1-patched/src/http/ngx_http_upstream.c	2013-04-08 16:37:48.326752696 -0700
+diff --exclude '*~' --exclude '*.swp' -urp nginx-1.4.2/src/http/ngx_http_upstream.c nginx-1.4.2-patched/src/http/ngx_http_upstream.c
+--- nginx-1.4.2/src/http/ngx_http_upstream.c	2013-02-11 06:39:49.000000000 -0800
++++ nginx-1.4.2-patched/src/http/ngx_http_upstream.c	2013-04-08 16:37:48.326752696 -0700
 @@ -2399,7 +2399,7 @@ ngx_http_upstream_process_non_buffered_u
  
      if (c->read->timedout) {
