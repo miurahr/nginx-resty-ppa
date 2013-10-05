@@ -104,7 +104,7 @@ config.status.media: config.env.media config.sub config.guess
 	    --add-module=$(MODULESDIR)/encrypted-session-nginx-module-0.03 \
 	    --add-module=$(MODULESDIR)/srcache-nginx-module-0.22 \
 	    --add-module=$(MODULESDIR)/ngx_lua-0.9.0 \
-	    --add-module=$(MODULESDIR)/headers-more-nginx-module-0.21 \
+	    --add-module=$(MODULESDIR)/headers-more-nginx-module-0.22 \
 	    --add-module=$(MODULESDIR)/array-var-nginx-module-0.03rc1 \
 	    --add-module=$(MODULESDIR)/memc-nginx-module-0.13rc3 \
 	    --add-module=$(MODULESDIR)/auth-request-nginx-module-0.2 \
@@ -164,7 +164,7 @@ config.status.openresty: config.env.openresty config.sub config.guess
 	    --add-module=$(MODULESDIR)/ngx_postgres-1.0rc3 \
 	    --add-module=$(MODULESDIR)/srcache-nginx-module-0.22 \
 	    --add-module=$(MODULESDIR)/ngx_lua-0.9.0 \
-	    --add-module=$(MODULESDIR)/headers-more-nginx-module-0.21 \
+	    --add-module=$(MODULESDIR)/headers-more-nginx-module-0.22 \
 	    --add-module=$(MODULESDIR)/array-var-nginx-module-0.03rc1 \
 	    --add-module=$(MODULESDIR)/memc-nginx-module-0.13rc3 \
 	    --add-module=$(MODULESDIR)/redis2-nginx-module-0.10 \
@@ -279,7 +279,7 @@ config.status.extras: config.env.extras config.sub config.guess
 	    --with-mail \
 	    --with-mail_ssl_module \
 	    --add-module=$(MODULESDIR)/nginx-auth-pam \
-	    --add-module=$(MODULESDIR)/headers-more-nginx-module-0.21 \
+	    --add-module=$(MODULESDIR)/headers-more-nginx-module-0.22 \
 	    --add-module=$(MODULESDIR)/ngx_devel_kit-0.2.19 \
 	    --add-module=$(MODULESDIR)/echo-nginx-module-0.48\
 	    --add-module=$(MODULESDIR)/nginx-http-push \
