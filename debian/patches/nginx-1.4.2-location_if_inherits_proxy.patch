@@ -1,6 +1,8 @@
---- nginx-1.4.2/src/http/modules/ngx_http_proxy_module.c	2012-04-23 18:40:01.000000000 +0800
-+++ nginx-1.4.2-patched/src/http/modules/ngx_http_proxy_module.c	2012-06-24 12:48:57.289834450 +0800
-@@ -3023,8 +3023,10 @@
+Index: nginx/src/http/modules/ngx_http_proxy_module.c
+===================================================================
+--- nginx.orig/src/http/modules/ngx_http_proxy_module.c	2013-10-06 07:41:52.758820066 +0900
++++ nginx/src/http/modules/ngx_http_proxy_module.c	2013-10-06 07:41:52.754820182 +0900
+@@ -2796,8 +2796,10 @@
  
      if (conf->upstream.upstream || conf->proxy_lengths) {
          clcf = ngx_http_conf_get_module_loc_conf(cf, ngx_http_core_module);

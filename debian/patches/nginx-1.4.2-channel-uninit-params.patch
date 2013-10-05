@@ -1,7 +1,8 @@
-diff -urp nginx-1.4.2/src/os/unix/ngx_channel.c nginx-1.4.2-patched/src/os/unix/ngx_channel.c
---- nginx-1.4.2/src/os/unix/ngx_channel.c	2012-01-18 07:07:43.000000000 -0800
-+++ nginx-1.4.2-patched/src/os/unix/ngx_channel.c	2012-09-17 11:33:09.215394217 -0700
-@@ -31,6 +31,8 @@ ngx_write_channel(ngx_socket_t s, ngx_ch
+Index: nginx/src/os/unix/ngx_channel.c
+===================================================================
+--- nginx.orig/src/os/unix/ngx_channel.c	2013-10-06 07:41:41.211154148 +0900
++++ nginx/src/os/unix/ngx_channel.c	2013-10-06 07:41:41.203154380 +0900
+@@ -31,6 +31,8 @@
          msg.msg_controllen = 0;
  
      } else {
@@ -10,10 +11,11 @@ diff -urp nginx-1.4.2/src/os/unix/ngx_channel.c nginx-1.4.2-patched/src/os/unix/
          msg.msg_control = (caddr_t) &cmsg;
          msg.msg_controllen = sizeof(cmsg);
  
-diff -urp nginx-1.4.2/src/os/unix/ngx_process_cycle.c nginx-1.4.2-patched/src/os/unix/ngx_process_cycle.c
---- nginx-1.4.2/src/os/unix/ngx_process_cycle.c	2012-07-02 09:23:14.000000000 -0700
-+++ nginx-1.4.2-patched/src/os/unix/ngx_process_cycle.c	2012-09-17 11:33:09.214394215 -0700
-@@ -356,6 +356,8 @@ ngx_start_worker_processes(ngx_cycle_t *
+Index: nginx/src/os/unix/ngx_process_cycle.c
+===================================================================
+--- nginx.orig/src/os/unix/ngx_process_cycle.c	2013-10-06 07:41:41.211154148 +0900
++++ nginx/src/os/unix/ngx_process_cycle.c	2013-10-06 07:41:41.207154264 +0900
+@@ -355,6 +355,8 @@
  
      ngx_log_error(NGX_LOG_NOTICE, cycle->log, 0, "start worker processes");
  
@@ -22,7 +24,7 @@ diff -urp nginx-1.4.2/src/os/unix/ngx_process_cycle.c nginx-1.4.2-patched/src/os
      ch.command = NGX_CMD_OPEN_CHANNEL;
  
      for (i = 0; i < n; i++) {
-@@ -463,6 +465,8 @@ ngx_signal_worker_processes(ngx_cycle_t
+@@ -460,6 +462,8 @@
      ngx_err_t      err;
      ngx_channel_t  ch;
  
@@ -31,7 +33,7 @@ diff -urp nginx-1.4.2/src/os/unix/ngx_process_cycle.c nginx-1.4.2-patched/src/os
  #if (NGX_BROKEN_SCM_RIGHTS)
  
      ch.command = 0;
-@@ -564,6 +568,8 @@ ngx_reap_children(ngx_cycle_t *cycle)
+@@ -561,6 +565,8 @@
      ngx_channel_t     ch;
      ngx_core_conf_t  *ccf;
  

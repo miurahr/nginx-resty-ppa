@@ -1,6 +1,8 @@
---- nginx-1.4.2/src/http/ngx_http_core_module.c	2010-12-14 18:38:42.000000000 +0800
-+++ nginx-1.4.2-patched/src/http/ngx_http_core_module.c	2011-01-30 19:24:34.956354518 +0800
-@@ -57,6 +57,8 @@
+Index: nginx/src/http/ngx_http_core_module.c
+===================================================================
+--- nginx.orig/src/http/ngx_http_core_module.c	2013-10-06 07:41:59.418627396 +0900
++++ nginx/src/http/ngx_http_core_module.c	2013-10-06 07:41:59.414627511 +0900
+@@ -58,6 +58,8 @@
      void *conf);
  static char *ngx_http_core_error_page(ngx_conf_t *cf, ngx_command_t *cmd,
      void *conf);
@@ -9,7 +11,7 @@
  static char *ngx_http_core_try_files(ngx_conf_t *cf, ngx_command_t *cmd,
      void *conf);
  static char *ngx_http_core_open_file_cache(ngx_conf_t *cf, ngx_command_t *cmd,
-@@ -614,6 +616,14 @@
+@@ -668,6 +670,14 @@
        0,
        NULL },
  
@@ -24,7 +26,7 @@
      { ngx_string("try_files"),
        NGX_HTTP_SRV_CONF|NGX_HTTP_LOC_CONF|NGX_CONF_2MORE,
        ngx_http_core_try_files,
-@@ -3052,7 +3062,6 @@
+@@ -3569,7 +3579,6 @@
       *     clcf->types = NULL;
       *     clcf->default_type = { 0, NULL };
       *     clcf->error_log = NULL;
@@ -32,15 +34,15 @@
       *     clcf->try_files = NULL;
       *     clcf->client_body_path = NULL;
       *     clcf->regex = NULL;
-@@ -3062,6 +3071,7 @@
-      *     clcf->gzip_proxied = 0;
+@@ -3580,6 +3589,7 @@
+      *     clcf->keepalive_disable = 0;
       */
  
 +    clcf->error_pages = NGX_CONF_UNSET_PTR;
      clcf->client_max_body_size = NGX_CONF_UNSET;
      clcf->client_body_buffer_size = NGX_CONF_UNSET_SIZE;
      clcf->client_body_timeout = NGX_CONF_UNSET_MSEC;
-@@ -3250,9 +3260,7 @@
+@@ -3776,9 +3786,7 @@
          }
      }
  
@@ -51,7 +53,7 @@
  
      ngx_conf_merge_str_value(conf->default_type,
                                prev->default_type, "text/plain");
-@@ -3988,6 +3996,10 @@
+@@ -4619,6 +4627,10 @@
      ngx_http_compile_complex_value_t   ccv;
  
      if (clcf->error_pages == NULL) {
@@ -62,10 +64,13 @@
          clcf->error_pages = ngx_array_create(cf->pool, 4,
                                               sizeof(ngx_http_err_page_t));
          if (clcf->error_pages == NULL) {
-@@ -4095,6 +4107,25 @@
+@@ -4723,6 +4735,25 @@
  
- 
- static char *
+     return NGX_CONF_OK;
+ }
++
++
++static char *
 +ngx_http_core_no_error_pages(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 +{
 +    ngx_http_core_loc_conf_t *clcf = conf;
@@ -82,9 +87,6 @@
 +
 +    return NGX_CONF_OK;
 +}
-+
-+
-+static char *
- ngx_http_core_try_files(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
- {
-     ngx_http_core_loc_conf_t *clcf = conf;
+ 
+ 
+ static char *
