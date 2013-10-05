@@ -18,7 +18,7 @@ This module is production ready.
 Version
 =======
 
-This document describes ngx_echo [v0.45](https://github.com/agentzh/echo-nginx-module/tags) released on 27 March 2013.
+This document describes ngx_echo [v0.48](https://github.com/agentzh/echo-nginx-module/tags) released on 15 September 2013.
 
 Synopsis
 ========
@@ -31,7 +31,7 @@ Synopsis
 
 
       location /hello {
-        echo -n "hello, "
+        echo -n "hello, ";
         echo "world!";
       }
 
@@ -1372,12 +1372,12 @@ You're recommended to install this module (as well as the Nginx core and many ot
 Alternatively, you can install this module manually with the Nginx source:
 
 Grab the nginx source code from [nginx.org](http://nginx.org/), for example,
-the version 1.2.7 (see [nginx compatibility](http://wiki.nginx.org/HttpEchoModule#Compatibility)), and then build the source with this module:
+the version 1.4.2 (see [nginx compatibility](http://wiki.nginx.org/HttpEchoModule#Compatibility)), and then build the source with this module:
 
 
-    $ wget 'http://sysoev.ru/nginx/nginx-1.2.7.tar.gz'
-    $ tar -xzvf nginx-1.2.7.tar.gz
-    $ cd nginx-1.2.7/
+    $ wget 'http://nginx.org/download/nginx-1.4.2.tar.gz'
+    $ tar -xzvf nginx-1.4.2.tar.gz
+    $ cd nginx-1.4.2/
     
     # Here we assume you would install you nginx under /opt/nginx/.
     $ ./configure --prefix=/opt/nginx \
@@ -1387,7 +1387,7 @@ the version 1.2.7 (see [nginx compatibility](http://wiki.nginx.org/HttpEchoModul
     $ make install
 
 
-Download the latest version of the release tarball of this module from [echo-nginx-module file list](http://github.com/agentzh/echo-nginx-module/tags).
+Download the latest version of the release tarball of this module from [echo-nginx-module file list](https://github.com/agentzh/echo-nginx-module/tags).
 
 Also, this module is included and enabled by default in the [ngx_openresty bundle](http://openresty.org).
 
@@ -1396,8 +1396,10 @@ Compatibility
 
 The following versions of Nginx should work with this module:
 
+* **1.5.x**                       (last tested: 1.5.4)
+* **1.4.x**                       (last tested: 1.4.2)
 * **1.3.x**                       (last tested: 1.3.7)
-* **1.2.x**                       (last tested: 1.2.7)
+* **1.2.x**                       (last tested: 1.2.9)
 * **1.1.x**                       (last tested: 1.1.5)
 * **1.0.x**                       (last tested: 1.0.11)
 * **0.9.x**                       (last tested: 0.9.4)
@@ -1444,13 +1446,13 @@ Report Bugs
 
 Although a lot of effort has been put into testing and code tuning, there must be some serious bugs lurking somewhere in this module. So whenever you are bitten by any quirks, please don't hesitate to
 
-1. create a ticket on the [issue tracking interface](http://github.com/agentzh/echo-nginx-module/issues) provided by GitHub,
+1. create a ticket on the [issue tracking interface](https://github.com/agentzh/echo-nginx-module/issues) provided by GitHub,
 1. or send a bug report, questions, or even patches to the [OpenResty Community](http://wiki.nginx.org/HttpEchoModule#Community).
 
 Source Repository
 =================
 
-Available on github at [agentzh/echo-nginx-module](http://github.com/agentzh/echo-nginx-module).
+Available on github at [agentzh/echo-nginx-module](https://github.com/agentzh/echo-nginx-module).
 
 Changes
 =======
@@ -1462,8 +1464,8 @@ The changes of every release of this module can be obtained from the ngx_openres
 Test Suite
 ==========
 
-This module comes with a Perl-driven test suite. The [test cases](http://github.com/agentzh/echo-nginx-module/tree/master/t/) are
-[declarative](http://github.com/agentzh/echo-nginx-module/blob/master/t/echo.t) too. Thanks to the [Test::Nginx](http://search.cpan.org/perldoc?Test::Nginx) module in the Perl world.
+This module comes with a Perl-driven test suite. The [test cases](https://github.com/agentzh/echo-nginx-module/tree/master/t/) are
+[declarative](https://github.com/agentzh/echo-nginx-module/blob/master/t/echo.t) too. Thanks to the [Test::Nginx](http://search.cpan.org/perldoc?Test::Nginx) module in the Perl world.
 
 To run it on your side:
 
