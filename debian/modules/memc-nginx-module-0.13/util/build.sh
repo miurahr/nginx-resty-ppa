@@ -15,6 +15,7 @@ home=~
 force=$2
 
 ngx-build $force $version \
+    --with-ld-opt="-L$PCRE_LIB -Wl,-rpath,$PCRE_LIB:$LIBDRIZZLE_LIB:$LUAJIT_LIB:/usr/local/lib" \
     --with-cc-opt="-O2" \
     --with-http_addition_module \
     --without-mail_pop3_module \
@@ -30,7 +31,9 @@ ngx-build $force $version \
     --add-module=$root/../ndk-nginx-module \
     --add-module=$root/../eval-nginx-module \
     --add-module=$root/../echo-nginx-module \
-    --add-module=$home/work/nginx/ngx_http_upstream_keepalive-2ce9d8a1ca93 \
+    --add-module=$root/../set-misc-nginx-module \
+    --add-module=$root/../lua-nginx-module \
+    --add-module=$home/work/nginx/ngx_http_upstream_keepalive-0.7 \
           --with-select_module \
           --with-poll_module \
           --with-rtsig_module \

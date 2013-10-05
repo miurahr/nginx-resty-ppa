@@ -106,7 +106,7 @@ config.status.media: config.env.media config.sub config.guess
 	    --add-module=$(MODULESDIR)/ngx_lua-0.9.0 \
 	    --add-module=$(MODULESDIR)/headers-more-nginx-module-0.22 \
 	    --add-module=$(MODULESDIR)/array-var-nginx-module-0.03rc1 \
-	    --add-module=$(MODULESDIR)/memc-nginx-module-0.13rc3 \
+	    --add-module=$(MODULESDIR)/memc-nginx-module-0.13 \
 	    --add-module=$(MODULESDIR)/auth-request-nginx-module-0.2 \
 	    $(CONFIGURE_OPTS)
 	touch $@
@@ -166,7 +166,7 @@ config.status.openresty: config.env.openresty config.sub config.guess
 	    --add-module=$(MODULESDIR)/ngx_lua-0.9.0 \
 	    --add-module=$(MODULESDIR)/headers-more-nginx-module-0.22 \
 	    --add-module=$(MODULESDIR)/array-var-nginx-module-0.03rc1 \
-	    --add-module=$(MODULESDIR)/memc-nginx-module-0.13rc3 \
+	    --add-module=$(MODULESDIR)/memc-nginx-module-0.13 \
 	    --add-module=$(MODULESDIR)/redis2-nginx-module-0.10 \
 	    --add-module=$(MODULESDIR)/redis-nginx-module-0.3.6 \
 	    --add-module=$(MODULESDIR)/auth-request-nginx-module-0.2 \

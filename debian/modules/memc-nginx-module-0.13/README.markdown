@@ -1,14 +1,19 @@
+<!---
+Don't edit this file manually! Instead you should generate it by using:
+    wiki2markdown.pl doc/HttpMemcModule.wiki
+-->
+
 Name
 ====
 
-**memc-nginx-module** - An extended version of the standard memcached module that supports set, add, delete, and many more memcached commands.
+**ngx_memc** - An extended version of the standard memcached module that supports set, add, delete, and many more memcached commands.
 
 *This module is not distributed with the Nginx source.* See [the installation instructions](http://wiki.nginx.org/HttpMemcModule#Installation).
 
 Version
 =======
 
-This document describes memc-nginx-module [v0.13rc2](http://github.com/agentzh/memc-nginx-module/tags) released on 24 November 2011.
+This document describes memc-nginx-module [v0.13](http://github.com/agentzh/memc-nginx-module/tags) released on 2 September 2013.
 
 Synopsis
 ========
@@ -121,6 +126,8 @@ This module is not supposed to be merged into the Nginx core because I've used [
 
 If you are going to use this module to cache location responses out of the box, try [HttpSRCacheModule](http://wiki.nginx.org/HttpSRCacheModule) with this module to achieve that.
 
+When used in conjunction with [HttpLuaModule](http://wiki.nginx.org/HttpLuaModule), it is recommended to use the [lua-resty-memcached](http://github.com/agentzh/lua-resty-memcached) library instead of this module though, because the former is much more flexible and memory-efficient.
+
 Keep-alive connections to memcached servers
 -------------------------------------------
 
@@ -135,7 +142,7 @@ Here's a sample configuration:
     
           # a pool with at most 1024 connections
           # and do not distinguish the servers:
-          keepalive 1024 single;
+          keepalive 1024;
         }
     
         server {
@@ -152,7 +159,7 @@ Here's a sample configuration:
 How it works
 ------------
 
-It implements the memcached TCP protocol all by itself, based upon the `upstream` mechansim. Everything involving I/O is non-blocking.
+It implements the memcached TCP protocol all by itself, based upon the `upstream` mechanism. Everything involving I/O is non-blocking.
 
 The module itself does not keep TCP connections to the upstream memcached servers across requests, just like other upstream modules. For a working solution, see section [Keep-alive connections to memcached servers](http://wiki.nginx.org/HttpMemcModule#Keep-alive_connections_to_memcached_servers).
 
@@ -466,12 +473,12 @@ You're recommended to install this module (as well as the Nginx core and many ot
 Alternatively, you can compile this module into the standard Nginx source distribution by hand:
 
 Grab the nginx source code from [nginx.org](http://nginx.org/), for example,
-the version 1.0.8 (see [nginx compatibility](http://wiki.nginx.org/HttpMemcModule#Compatibility)), and then build the source with this module:
+the version 1.4.2 (see [nginx compatibility](http://wiki.nginx.org/HttpMemcModule#Compatibility)), and then build the source with this module:
 
 
-    wget 'http://nginx.org/download/nginx-1.0.8.tar.gz'
-    tar -xzvf nginx-1.0.8.tar.gz
-    cd nginx-1.0.8/
+    wget 'http://nginx.org/download/nginx-1.4.2.tar.gz'
+    tar -xzvf nginx-1.4.2.tar.gz
+    cd nginx-1.4.2/
     
     # Here we assume you would install you nginx under /opt/nginx/.
     ./configure --prefix=/opt/nginx \
@@ -498,6 +505,9 @@ Compatibility
 
 The following versions of Nginx should work with this module:
 
+* **1.5.x**                       (last tested: 1.5.4)
+* **1.4.x**                       (last tested: 1.4.2)
+* **1.2.x**                       (last tested: 1.2.9)
 * **1.1.x**                       (last tested: 1.1.5)
 * **1.0.x**                       (last tested: 1.0.10)
 * **0.9.x**                       (last tested: 0.9.4)
@@ -509,6 +519,19 @@ It's worth mentioning that some 0.7.x versions older than 0.7.46 might also work
 Earlier versions of Nginx like 0.6.x and 0.5.x will *not* work.
 
 If you find that any particular version of Nginx above 0.7.46 does not work with this module, please consider [reporting a bug](http://wiki.nginx.org/HttpMemcModule#Report_Bugs).
+
+Community
+=========
+
+English Mailing List
+--------------------
+
+The [openresty-en](https://groups.google.com/group/openresty-en) mailing list is for English speakers.
+
+Chinese Mailing List
+--------------------
+
+The [openresty](https://groups.google.com/group/openresty) mailing list is for Chinese speakers.
 
 Report Bugs
 ===========
@@ -523,62 +546,12 @@ Source Repository
 
 Available on github at [agentzh/memc-nginx-module](http://github.com/agentzh/memc-nginx-module).
 
-ChangeLog
-=========
+Changes
+=======
 
-v0.12
------
-* fixed the spots that trigger the unused-but-set-variable warning by gcc 4.6.
-* added more debug information when memcached sends back "invalid" responses.
-* we now document the timeout units properly. it should default to seconds.
-* now we use the 2-clause bsd license.
-* added an error message when no upstream backend is found in "memc_pass $backend".
+The changes of every release of this module can be obtained from the ngx_openresty bundle's change logs:
 
-v0.11
------
-* fixed the zero size buf alert in error.log when $memc_value is set to empty (""). thanks iframist.
-
-v0.10
------
-* we no longer use the problematic `ngx_strXcmp` macros in our source because it may cause invalid reads and thus segmentation faults. thanks Piotr Sikora.
-
-v0.09
------
-* now we copy out `r->request_body->bufs` for our memcached request to avoid modifying the original request body. Thanks Matthieu Tourne.
-
-v0.08
------
-* now the memc commands other than get work with subrequests in memory. Thanks Yao Xinming for reporting it. Using storage memcached commands in ngx_eval module's eval blocks no longer hang the server.
-
-v0.07
------
-* applied the patch from nginx 0.8.35 that fixed a bug that ngx_eval may issue the incorrect error message "memcached sent invalid trailer".
-
-v0.06
------
-* implemented the [memc_flags_to_last_modified](http://wiki.nginx.org/HttpMemcModule#memc_flags_to_last_modified) directive.
-* added a new variable named [$memc_flags_as_http_time](http://wiki.nginx.org/HttpMemcModule#.24memc_flags_as_http_time).
-
-v0.05
------
-* removed the `memc_bind` directive since it won't compile with nginx 0.8.31.
-
-v0.04
------
-* to ensure Maxim's [ngx_http_upstream_keepalive](http://mdounin.ru/hg/ngx_http_upstream_keepalive/) module caches our connections even if `u->headers_in->status` is 201 (Created).
-* updated docs to make it clear that this module can work with "upstream" multi-server backends. thanks Bernd Dorn for reporting it.
-
-v0.03
------
-* fixed a connection leak caused by an extra `r->main->count++` operation: we should NOT do `r->main->count++` after calling the `ngx_http_read_client_request_body` function in our content handler.
-
-v0.02
------
-* applied the (minor) optimization trick suggested by Marcus Clyne: creating our variables and save their indexes at post-config phase when the [memc_pass](http://wiki.nginx.org/HttpMemcModule#memc_pass) directive is actually used in the config file.
-
-v0.01
------
-* initial release.
+<http://openresty.org/#Changes>
 
 Test Suite
 ==========
@@ -616,16 +589,16 @@ You'll be very welcomed to submit patches to the [author](http://wiki.nginx.org/
 Author
 ======
 
-agentzh (章亦春) *&lt;agentzh@gmail.com&gt;*
+Yichun "agentzh" Zhang (章亦春) *&lt;agentzh@gmail.com&gt;*, CloudFlare Inc.
 
 This wiki page is also maintained by the author himself, and everybody is encouraged to improve this page as well.
 
 Copyright & License
 ===================
 
-The code base is borrowed directly from the standard [memcached module](http://wiki.nginx.org/HttpMemcachedModule) in the Nginx 0.8.28 core. This part of code is copyrighted by Igor Sysoev.
+The code base is borrowed directly from the standard [memcached module](http://wiki.nginx.org/HttpMemcachedModule) in the Nginx core. This part of code is copyrighted by Igor Sysoev and Nginx Inc.
 
-Copyright (c) 2009, 2010, 2011, Zhang "agentzh" Yichun (章亦春) <agentzh@gmail.com>.
+Copyright (c) 2009-2013, Yichun "agentzh" Zhang (章亦春) <agentzh@gmail.com>, CloudFlare Inc.
 
 This module is licensed under the terms of the BSD license.
 
@@ -655,6 +628,7 @@ See Also
 * My slides demonstrating various ngx_memc usage: <http://agentzh.org/misc/slides/nginx-conf-scripting/nginx-conf-scripting.html#34> (use the arrow or pageup/pagedown keys on the keyboard to swith pages)
 * The latest [memcached TCP protocol](http://code.sixapart.com/svn/memcached/trunk/server/doc/protocol.txt).
 * The [ngx_srcache](http://github.com/agentzh/srcache-nginx-module) module
+* The [lua-resty-memcached](https://github.com/agentzh/lua-resty-memcached) library based on the [HttpLuaModule](http://wiki.nginx.org/HttpLuaModule) cosocket API.
 * The standard [memcached](http://wiki.nginx.org/HttpMemcachedModule) module.
 * The [echo module](http://wiki.nginx.org/HttpEchoModule) for Nginx module's automated testing.
 * The standard [headers](http://wiki.nginx.org/HttpHeadersModule) module and the 3rd-parth [headers-more](http://wiki.nginx.org/HttpHeadersMoreModule) module.
