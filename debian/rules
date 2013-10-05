@@ -103,7 +103,7 @@ config.status.media: config.env.media config.sub config.guess
 	    --add-module=$(MODULESDIR)/form-input-nginx-module-0.07 \
 	    --add-module=$(MODULESDIR)/encrypted-session-nginx-module-0.03 \
 	    --add-module=$(MODULESDIR)/srcache-nginx-module-0.21 \
-	    --add-module=$(MODULESDIR)/ngx_lua-0.8.5 \
+	    --add-module=$(MODULESDIR)/ngx_lua-0.9.0 \
 	    --add-module=$(MODULESDIR)/headers-more-nginx-module-0.21 \
 	    --add-module=$(MODULESDIR)/array-var-nginx-module-0.03rc1 \
 	    --add-module=$(MODULESDIR)/memc-nginx-module-0.13rc3 \
@@ -163,7 +163,7 @@ config.status.openresty: config.env.openresty config.sub config.guess
 	    --add-module=$(MODULESDIR)/drizzle-nginx-module-0.1.5 \
 	    --add-module=$(MODULESDIR)/ngx_postgres-1.0rc2 \
 	    --add-module=$(MODULESDIR)/srcache-nginx-module-0.21 \
-	    --add-module=$(MODULESDIR)/ngx_lua-0.8.5 \
+	    --add-module=$(MODULESDIR)/ngx_lua-0.9.0 \
 	    --add-module=$(MODULESDIR)/headers-more-nginx-module-0.21 \
 	    --add-module=$(MODULESDIR)/array-var-nginx-module-0.03rc1 \
 	    --add-module=$(MODULESDIR)/memc-nginx-module-0.13rc3 \
@@ -283,7 +283,7 @@ config.status.extras: config.env.extras config.sub config.guess
 	    --add-module=$(MODULESDIR)/ngx_devel_kit-0.2.18 \
 	    --add-module=$(MODULESDIR)/echo-nginx-module-0.45\
 	    --add-module=$(MODULESDIR)/nginx-http-push \
-	    --add-module=$(MODULESDIR)/ngx_lua-0.8.5 \
+	    --add-module=$(MODULESDIR)/ngx_lua-0.9.0 \
 	    --add-module=$(MODULESDIR)/nginx-upload-progress \
 	    --add-module=$(MODULESDIR)/nginx-upstream-fair \
 	    --add-module=$(MODULESDIR)/nginx-dav-ext-module \
