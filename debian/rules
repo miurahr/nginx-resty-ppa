@@ -161,7 +161,7 @@ config.status.openresty: config.env.openresty config.sub config.guess
 	    --add-module=$(MODULESDIR)/form-input-nginx-module-0.07 \
 	    --add-module=$(MODULESDIR)/encrypted-session-nginx-module-0.03 \
 	    --add-module=$(MODULESDIR)/drizzle-nginx-module-0.1.6 \
-	    --add-module=$(MODULESDIR)/ngx_postgres-1.0rc2 \
+	    --add-module=$(MODULESDIR)/ngx_postgres-1.0rc3 \
 	    --add-module=$(MODULESDIR)/srcache-nginx-module-0.22 \
 	    --add-module=$(MODULESDIR)/ngx_lua-0.9.0 \
 	    --add-module=$(MODULESDIR)/headers-more-nginx-module-0.21 \
