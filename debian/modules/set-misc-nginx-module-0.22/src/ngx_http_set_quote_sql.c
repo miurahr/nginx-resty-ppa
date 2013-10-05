@@ -7,9 +7,14 @@
 #include "ngx_http_set_quote_sql.h"
 
 
+static ngx_int_t ngx_http_pg_utf_escape(ngx_http_request_t *r, ngx_str_t *res);
+static ngx_int_t ngx_http_pg_utf_islegal(const unsigned char *s, ngx_int_t len);
+static ngx_int_t ngx_http_pg_utf_mblen(const unsigned char *s);
+
+
 ngx_int_t
-ngx_http_set_misc_quote_pgsql_str(ngx_http_request_t *r,
-        ngx_str_t *res, ngx_http_variable_value_t *v)
+ngx_http_set_misc_quote_pgsql_str(ngx_http_request_t *r, ngx_str_t *res,
+    ngx_http_variable_value_t *v)
 {
     u_char                   *pstr;
     ngx_int_t               length;
@@ -37,12 +42,15 @@ ngx_http_set_misc_quote_pgsql_str(ngx_http_request_t *r,
        return NGX_OK;
     }
 
-    res = ngx_http_pg_utf_escape(r, res);
+    if (ngx_http_pg_utf_escape(r, res) != NGX_OK) {
+        return NGX_ERROR;
+    }
+
     return NGX_OK;
 }
 
 
-ngx_int_t
+static ngx_int_t
 ngx_http_pg_utf_mblen(const unsigned char *s)
 {
     int len;
@@ -67,7 +75,7 @@ ngx_http_pg_utf_mblen(const unsigned char *s)
 }
 
 
-ngx_int_t
+static ngx_int_t
 ngx_http_pg_utf_islegal(const unsigned char *s, ngx_int_t len)
 {
     ngx_int_t               mblen;
@@ -135,17 +143,17 @@ ngx_http_pg_utf_islegal(const unsigned char *s, ngx_int_t len)
 }
 
 
-ngx_str_t *
+static ngx_int_t
 ngx_http_pg_utf_escape(ngx_http_request_t *r, ngx_str_t *res)
 {
     ngx_str_t               *result;
     ngx_int_t                l, count;
     u_char                  *d, *p, *p1;
 
-    l           = res->len;
-    d           = res->data;
-    result      = res;
-    count       = 0;
+    l      = res->len;
+    d      = res->data;
+    result = res;
+    count  = 0;
 
     while (l-- > 0) {
         if (*d & 0x80) {
@@ -155,12 +163,12 @@ ngx_http_pg_utf_escape(ngx_http_request_t *r, ngx_str_t *res)
         count++;
     }
 
-    d   = res->data;
-    l   = res->len;
+    d = res->data;
+    l = res->len;
 
-    p   = ngx_palloc(r->pool, count);
+    p = ngx_palloc(r->pool, count);
     if (p == NULL) {
-        return result;
+        return NGX_ERROR;
     }
 
     p1  = p;
@@ -177,16 +185,16 @@ ngx_http_pg_utf_escape(ngx_http_request_t *r, ngx_str_t *res)
         d++;
     }
 
-    result->len     = count;
-    result->data    = p1;
+    result->len  = count;
+    result->data = p1;
 
-    return result;
+    return NGX_OK;
 }
 
 
 ngx_int_t
-ngx_http_set_misc_quote_sql_str(ngx_http_request_t *r,
-        ngx_str_t *res, ngx_http_variable_value_t *v)
+ngx_http_set_misc_quote_sql_str(ngx_http_request_t *r, ngx_str_t *res,
+    ngx_http_variable_value_t *v)
 {
     size_t                   len;
     u_char                  *p;
@@ -231,8 +239,7 @@ ngx_http_set_misc_quote_sql_str(ngx_http_request_t *r,
 
 
 uintptr_t
-ngx_http_set_misc_escape_sql_str(u_char *dst, u_char *src,
-        size_t size)
+ngx_http_set_misc_escape_sql_str(u_char *dst, u_char *src, size_t size)
 {
     ngx_uint_t               n;
 
@@ -244,12 +251,15 @@ ngx_http_set_misc_escape_sql_str(u_char *dst, u_char *src,
              * is always 1 */
             if ((*src & 0x80) == 0) {
                 switch (*src) {
-                    case '\r':
+                    case '\0':
+                    case '\b':
                     case '\n':
+                    case '\r':
+                    case '\t':
                     case '\\':
                     case '\'':
                     case '"':
-                    case '\032':
+                    case 26: /* \z */
                         n++;
                         break;
                     default:
@@ -266,14 +276,29 @@ ngx_http_set_misc_escape_sql_str(u_char *dst, u_char *src,
     while (size) {
         if ((*src & 0x80) == 0) {
             switch (*src) {
-                case '\r':
+                case '\0':
                     *dst++ = '\\';
-                    *dst++ = 'r';
+                    *dst++ = '0';
+                    break;
+
+                case '\b':
+                    *dst++ = '\\';
+                    *dst++ = 'b';
                     break;
 
                 case '\n':
                     *dst++ = '\\';
                     *dst++ = 'n';
+                    break;
+
+                case '\r':
+                    *dst++ = '\\';
+                    *dst++ = 'r';
+                    break;
+
+                case '\t':
+                    *dst++ = '\\';
+                    *dst++ = 't';
                     break;
 
                 case '\\':
@@ -291,9 +316,9 @@ ngx_http_set_misc_escape_sql_str(u_char *dst, u_char *src,
                     *dst++ = '"';
                     break;
 
-                case '\032':
+                case 26:
                     *dst++ = '\\';
-                    *dst++ = *src;
+                    *dst++ = 'z';
                     break;
 
                 default:

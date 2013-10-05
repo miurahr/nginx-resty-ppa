@@ -99,7 +99,7 @@ config.status.media: config.env.media config.sub config.guess
 	    --add-module=$(MODULESDIR)/echo-nginx-module-0.45 \
 	    --add-module=$(MODULESDIR)/xss-nginx-module-0.03rc9 \
 	    --add-module=$(MODULESDIR)/ngx_coolkit-0.2rc1 \
-	    --add-module=$(MODULESDIR)/set-misc-nginx-module-0.22rc8 \
+	    --add-module=$(MODULESDIR)/set-misc-nginx-module-0.22 \
 	    --add-module=$(MODULESDIR)/form-input-nginx-module-0.07 \
 	    --add-module=$(MODULESDIR)/encrypted-session-nginx-module-0.03 \
 	    --add-module=$(MODULESDIR)/srcache-nginx-module-0.21 \
@@ -157,7 +157,7 @@ config.status.openresty: config.env.openresty config.sub config.guess
 	    --add-module=$(MODULESDIR)/echo-nginx-module-0.45 \
 	    --add-module=$(MODULESDIR)/xss-nginx-module-0.03rc9 \
 	    --add-module=$(MODULESDIR)/ngx_coolkit-0.2rc1 \
-	    --add-module=$(MODULESDIR)/set-misc-nginx-module-0.22rc8 \
+	    --add-module=$(MODULESDIR)/set-misc-nginx-module-0.22 \
 	    --add-module=$(MODULESDIR)/form-input-nginx-module-0.07 \
 	    --add-module=$(MODULESDIR)/encrypted-session-nginx-module-0.03 \
 	    --add-module=$(MODULESDIR)/drizzle-nginx-module-0.1.5 \

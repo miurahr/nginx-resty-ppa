@@ -10,8 +10,8 @@
 
 
 ngx_int_t
-ngx_http_set_misc_set_rotate(ngx_http_request_t *r,
-                             ngx_str_t *res, ngx_http_variable_value_t *v)
+ngx_http_set_misc_set_rotate(ngx_http_request_t *r, ngx_str_t *res,
+    ngx_http_variable_value_t *v)
 {
     ngx_http_variable_value_t   *rotate_from, *rotate_to, *rotate_num;
     ngx_int_t                    int_from, int_to, tmp, int_current;
@@ -108,6 +108,6 @@ ngx_http_set_rotate(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
     filter.size = 3;
     filter.data = NULL;
 
-    return  ndk_set_var_multi_value_core(cf, &value[1], &value[1], &filter);
+    return ndk_set_var_multi_value_core(cf, &value[1], &value[1], &filter);
 }
 

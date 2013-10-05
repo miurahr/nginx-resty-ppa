@@ -8,7 +8,7 @@
 
 ngx_uint_t
 ngx_http_set_misc_apply_distribution(ngx_log_t *log, ngx_uint_t hash,
-        ndk_upstream_list_t *ul, ngx_http_set_misc_distribution_t type)
+    ndk_upstream_list_t *ul, ngx_http_set_misc_distribution_t type)
 {
     switch (type) {
     case ngx_http_set_misc_distribution_modula:
@@ -27,8 +27,8 @@ ngx_http_set_misc_apply_distribution(ngx_log_t *log, ngx_uint_t hash,
 
 
 ngx_int_t
-ngx_http_set_misc_set_hashed_upstream(ngx_http_request_t *r,
-        ngx_str_t *res, ngx_http_variable_value_t *v, void *data)
+ngx_http_set_misc_set_hashed_upstream(ngx_http_request_t *r, ngx_str_t *res,
+    ngx_http_variable_value_t *v, void *data)
 {
     ngx_str_t                  **u;
     ndk_upstream_list_t         *ul = data;
@@ -125,8 +125,8 @@ ngx_http_set_hashed_upstream(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
                                             ulname->data, ulname->len);
     if (ul == NULL) {
         ngx_log_error(NGX_LOG_ERR, cf->log, 0,
-                "set_hashed_upstream: upstream list \"%V\" "
-                "not defined yet", ulname);
+                      "set_hashed_upstream: upstream list \"%V\" "
+                      "not defined yet", ulname);
         return NGX_CONF_ERROR;
     }
 
@@ -136,6 +136,6 @@ ngx_http_set_hashed_upstream(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
     filter.data = ul;
     filter.type = NDK_SET_VAR_VALUE_DATA;
 
-    return  ndk_set_var_value_core(cf, var, v, &filter);
+    return ndk_set_var_value_core(cf, var, v, &filter);
 }
 
